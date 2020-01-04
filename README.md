@@ -31,7 +31,6 @@ $ npm start
 
 Now you need to go to `https://YOUR_SHOPIFY_STORE.myshopify.com/admin/settings/notifications` and add a new webhook, pointing to the `ngrok` HTTPS url: `https://YOUR_NGROK_ID.ngrok.io/webhook/inventory_level/update`, with the `Inventory Update` event.
 
-
 ## Testing
 Start testing using `mocha`:
 
