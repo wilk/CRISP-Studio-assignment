@@ -3,7 +3,7 @@ const { GraphQLClient } = require('graphql-request');
 const logger = require('./logger');
 
 const shop1 = config.get('shop1');
-const shop2 = config.get('shop1');
+const shop2 = config.get('shop2');
 
 const shop1Client = new GraphQLClient('https://crisp-shop-wilk1.myshopify.com/admin/api/2020-01/graphql.json', {
   headers: {
@@ -88,7 +88,7 @@ const sync = async (sourceShopHost, destShopHost, payload) => {
   result = await destClient.request(adjustInventory, { inventoryAdjustQuantityInput: inventoryPayload });
   logger.info(`Inventory synched successfully!`);
 
-  return result.inventoryLevel.available;
+  return result.inventoryAdjustQuantity.inventoryLevel.available;
 };
 
 module.exports = {

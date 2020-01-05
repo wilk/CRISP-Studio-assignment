@@ -7,7 +7,7 @@ const inventory = require('./inventory');
 const app = express();
 
 const shop1 = config.get('shop1');
-const shop2 = config.get('shop1');
+const shop2 = config.get('shop2');
 
 app.use(bodyParser.json());
 
@@ -16,9 +16,8 @@ app.post('/webhook/inventory_level/update', async (req, res) => {
   const { inventory_item_id: inventoryItemId, available } = req.body;
 
   if (topic === 'inventory_levels/update') {
-    const source = shop === shop1.host ? shop1.host : shop2.host;
     const dest = shop === shop1.host ? shop2.host : shop1.host;
-    await inventory.sync(source, dest, { inventoryItemId, available });
+    await inventory.sync(shop, dest, { inventoryItemId, available });
   }
 
   res.end();

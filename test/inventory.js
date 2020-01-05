@@ -57,8 +57,10 @@ describe('Inventory', function () {
 
       return [200, {
         data: {
-          inventoryLevel: {
-            available: 10
+          inventoryAdjustQuantity: {
+            inventoryLevel: {
+              available: 10
+            }
           }
         }
       }];
